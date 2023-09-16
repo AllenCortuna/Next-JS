@@ -19,13 +19,13 @@ const Tasks = async () => {
   const todos = await fetchRepo();
   console.log("todo: ", todos);
   return (
-    <div className="flex p-10 flex-wrap gap-10">
+    <div className="flex p-4 sm:p-10 flex-wrap gap-10 justify-center content-start">
       {todos.map((todo) => (
         <Link href={`/task/${todo.id}`} key={todo.id}>
-          <Card className="truncate max-w-[20rem]">
+          <Card className="w-[20rem] md:w-[25rem]">
             <CardHeader>
               <CardTitle>{todo.name}</CardTitle>
-              <CardDescription >{todo.url}</CardDescription>
+              <CardDescription className="truncate" >{todo.url}</CardDescription>
             </CardHeader>
             <CardContent>
               <p>{todo?.visibility}</p>
