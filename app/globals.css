@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 * {
-  @apply font-normal text-zinc-300;
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
