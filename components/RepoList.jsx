@@ -13,7 +13,7 @@ const fetchRepo = async () => {
 const RepoList = async () => {
   const repos = await fetchRepo();
   return (
-    <Card className="w-full mx-auto gap-4 flex flex-col border-none justify-start px-6 bg-transparent mb-10 shadow-none">
+    <Card className="w-full mx-auto gap-4 grid md:grid-cols-2 border-none px-6 bg-transparent mb-10 shadow-none">
       {repos.map((repo) => (
         <Link
           key={repo.id}

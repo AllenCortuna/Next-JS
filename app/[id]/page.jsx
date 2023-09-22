@@ -8,20 +8,21 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
-import { Github,Bug,ArrowBigUpDash } from "lucide-react";
+import { Github, Bug, ArrowBigUpDash } from "lucide-react";
 import RepoList from "@/components/RepoList";
 import { Eye } from "lucide-react";
+import { TerminalSquare } from "lucide-react";
 
 const Info = async (params) => {
   const id = params.params.id;
   const repo = await fetch("https://api.github.com/repos/allencortuna/" + id, {
-    next: { revalidate: 60 },
+    next: { revalidate: 60 * 60 * 24 },
   })
     .then((response) => response.json())
     .then((json) => json);
   console.log("repo: ", repo);
   return (
-    <div className="p-4 flex content-start flex-col h-auto max-w-[30rem] justify-center gap-10">
+    <div className="p-4 flex mx-auto flex-col content-start flex-col h-auto max-w-[34rem] justify-center gap-10">
       <Card className="w-full mx-auto">
         <CardHeader>
           <CardTitle className="text-3xl">{repo.name}</CardTitle>
@@ -36,19 +37,25 @@ const Info = async (params) => {
             rel="noopener noreferrer"
             className="flex gap-2"
           >
-            <Github size={24} className=" rounded-lg p-1 dark:bg-zinc-800 bg-zinc-100" />
+            <Github
+              size={24}
+              className=" rounded-lg p-1 dark:bg-zinc-800 bg-zinc-100"
+            />
             <p className="truncate text-xs w-[16rem] sm:w-auto font-[500] my-auto">
               {repo.html_url}
             </p>
           </Link>
-        
+
           <Link
             href={repo.url}
             target="_blank"
             rel="noopener noreferrer"
             className="flex gap-2"
           >
-            <ArrowBigUpDash size={24} className=" rounded-lg p-1 dark:bg-zinc-800 bg-zinc-100" />
+            <ArrowBigUpDash
+              size={24}
+              className=" rounded-lg p-1 dark:bg-zinc-800 bg-zinc-100"
+            />
             <p className="truncate text-xs w-[16rem] sm:w-auto font-[500] my-auto">
               {repo.url}
             </p>
@@ -57,26 +64,28 @@ const Info = async (params) => {
 
         <CardFooter className="mt-auto mb-0 flex gap-2">
           {repo.language && (
-            <Badge variant="outline" className={"rounded-md p-3 py-1"}>
+            <Badge
+              variant="outline"
+              className={"rounded-md p-3 py-1 flex gap-2"}
+            >
+              <TerminalSquare size={16} className="" />
               <p>{repo.language}</p>
             </Badge>
           )}
-          
+
           <Badge variant="outline" className={"rounded-md p-3 py-1 flex gap-2"}>
             <Bug size={16} className="" />
             {repo.open_issues_count}
           </Badge>
-          
 
           <Badge variant="outline" className={"rounded-md p-3 py-1 flex gap-2"}>
             <Eye size={16} className="" />
             <p>{repo?.visibility}</p>
           </Badge>
         </CardFooter>
-        
       </Card>
-     
-      <RepoList/>
+
+      <RepoList />
     </div>
   );
 };

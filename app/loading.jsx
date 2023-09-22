@@ -13,7 +13,7 @@ const Loading = () => {
   const newArray = Array.from({ length: 6 }, (_, index) => index + 1);
 
 
-  console.log(newArray)
+  // console.log(newArray)
   return (
     <div className="flex p-4 sm:p-10 flex-wrap gap-10 w-full justify-center content-start">
       {newArray.map((id) => (

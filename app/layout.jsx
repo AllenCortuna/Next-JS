@@ -12,10 +12,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={poppins.className}>
+      <body className={`${poppins.className}  bg-zinc-100 dark:bg-zinc-950`}>
        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Navbar/>
-        <main className="bg-zinc-100 dark:bg-zinc-950 flex w-screen  justify-center min-h-screen pt-10">{children}</main>
+        <main className="flex-col flex w-screen justify-center content-start pt-10 md:pt-14">{children}</main>
         </ThemeProvider> 
       </body>
     </html>

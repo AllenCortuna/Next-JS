@@ -10,9 +10,9 @@ import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
 
 const fetchRepo = async () => {
-  await new Promise((resolve) => setTimeout(resolve, 3000));
+  // await new Promise((resolve) => setTimeout(resolve, 3000));
   const repos = await fetch("https://api.github.com/users/allencortuna/repos", {
-    next: { revalidate: 0 },
+    next: { revalidate: 60 },
   });
   return repos.json();
 };
