@@ -1,7 +1,7 @@
 import React from "react";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
-import { ArrowBigUpDash } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 const fetchRepo = async () => {
   const repos = await fetch("https://api.github.com/users/allencortuna/repos", {
@@ -13,18 +13,19 @@ const fetchRepo = async () => {
 const RepoList = async () => {
   const repos = await fetchRepo();
   return (
-    <Card className="w-full mx-auto gap-4 flex flex-col border-none justify-start px-6 ">
+    <Card className="w-full mx-auto gap-4 flex flex-col border-none justify-start px-6 bg-transparent mb-10 shadow-none">
       {repos.map((repo) => (
         <Link
           key={repo.id}
-          href={"/repo/"+repo.name}
-          className="flex gap-2 underline dark:text-zinc-300"
+          href={"/"+repo.name}
+          className="flex gap-2 dark:text-zinc-300 text-zinc-700 underline hover:text-lime-600 dark:hover:text-lime-500"
         >
-          <ArrowBigUpDash
-            size={20}
-            className=""
+          <CheckCircle2
+            size={15}
+            className="my-auto"
+            strokeWidth={3}
           />
-          <p className="truncate text-xs w-[16rem] sm:w-auto font-[500] my-auto">
+          <p className="truncate text-xs w-[16rem] sm:w-auto font-[600] my-auto">
             {repo.name}
           </p>
         </Link>

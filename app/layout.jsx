@@ -13,7 +13,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+       <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
           <Navbar/>
         <main className="bg-zinc-100 dark:bg-zinc-950 flex w-screen  justify-center min-h-screen pt-10">{children}</main>
         </ThemeProvider> 
