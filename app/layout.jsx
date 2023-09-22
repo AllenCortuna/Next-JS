@@ -1,10 +1,8 @@
 import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 import { Poppins } from "next/font/google";
-import { ModeToggle } from "@/components/mode-toggle";
-import Link from "next/link";
-// const inter = Inter({ subsets: ["latin"] });
-const poppins = Poppins({ subsets: ["latin"], weight: '400' });
+import Navbar from "@/components/Navbar";
+const poppins = Poppins({ subsets: ["latin"], weight: ['300','400','500','600','700','900']});
 
 export const metadata = {
   title: "Create Next App",
@@ -16,12 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <nav className="flex w-screen justify-between p-2 content-center md:px-16 border-b dark:border-zinc-600 bg-white dark:bg-zinc-950">
-            <Link href={"/task"} className="text-xl font-bold text-zinc-800 dark:text-zinc-100 my-auto">Repo List</Link>
-            
-         <ModeToggle/>
-
-          </nav>
+          <Navbar/>
         <main className="bg-zinc-100 dark:bg-zinc-950 flex w-screen  justify-center min-h-screen pt-10">{children}</main>
         </ThemeProvider> 
       </body>

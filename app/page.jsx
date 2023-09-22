@@ -5,8 +5,7 @@ export default function Home() {
   
   return (
     <main>
-      <h2>Dashboard</h2>
-      <Link href={'/task'}>task</Link>
+      <Link href={'/repo'}>repo</Link>
     </main>
   );
 }
